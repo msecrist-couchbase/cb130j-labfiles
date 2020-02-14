@@ -7,6 +7,7 @@ public abstract class Entity {
 	private Date created;
 	private Date updated;
 	private long cas;
+	private String type;
 
 	protected Entity() {
 		created = updated = new Date();
@@ -21,6 +22,14 @@ public abstract class Entity {
 	}
 
 	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getClassName() {
 		return getClass().getName();
 	}
 

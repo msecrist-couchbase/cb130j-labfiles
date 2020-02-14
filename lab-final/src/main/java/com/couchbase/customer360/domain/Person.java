@@ -2,7 +2,7 @@ package com.couchbase.customer360.domain;
 
 public abstract class Person extends Entity {
 	private String email;
-	private String userName;
+	private String username;
 	private String firstName;
 	private String lastName;
 	private String phoneNumber;
@@ -15,12 +15,12 @@ public abstract class Person extends Entity {
 		this.email = email;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getFirstName() {
@@ -51,7 +51,7 @@ public abstract class Person extends Entity {
 	public String toString() {
 		return "Person{" +
 				"email='" + email + '\'' +
-				", userName='" + userName + '\'' +
+				", userName='" + username + '\'' +
 				", firstName='" + firstName + '\'' +
 				", lastName='" + lastName + '\'' +
 				", phoneNumber='" + phoneNumber + '\'' +

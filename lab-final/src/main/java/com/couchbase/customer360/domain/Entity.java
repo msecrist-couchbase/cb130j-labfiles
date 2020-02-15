@@ -1,5 +1,7 @@
 package com.couchbase.customer360.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 public abstract class Entity {
@@ -29,6 +31,7 @@ public abstract class Entity {
 		this.type = type;
 	}
 
+	@JsonIgnore
 	public String getClassName() {
 		return getClass().getName();
 	}

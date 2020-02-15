@@ -44,7 +44,7 @@ public class CustomerController {
 
     @PutMapping("/customer/{customerId}")
     public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer, @PathVariable String customerId) {
-        if (! customerId.equals(customer.getId())) {
+        if (! customerId.equals(customer.getType() + "::" + customer.getId())) {
             return new ResponseEntity<Customer>(HttpStatus.BAD_REQUEST);
         } else {
             repo.update(customer);

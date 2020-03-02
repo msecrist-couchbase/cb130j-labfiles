@@ -3,14 +3,20 @@ package com.couchbase.customer360.data;
 import com.couchbase.client.core.error.CouchbaseException;
 import com.couchbase.client.core.error.DocumentExistsException;
 import com.couchbase.client.core.error.DocumentNotFoundException;
+import com.couchbase.client.core.error.QueryException;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.Cluster;
 import com.couchbase.client.java.Collection;
-import com.couchbase.client.java.codec.JacksonJsonSerializer;
-import com.couchbase.client.java.codec.JsonTranscoder;
-import com.couchbase.client.java.kv.*;
+import com.couchbase.client.java.json.JsonObject;
+import com.couchbase.client.java.kv.GetResult;
+import com.couchbase.client.java.kv.MutationResult;
+import com.couchbase.client.java.query.QueryResult;
 import com.couchbase.customer360.domain.Customer;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+import static com.couchbase.client.java.query.QueryOptions.queryOptions;
 
 @Repository
 public class CustomerRepository implements BaseRepository<Customer> {
@@ -44,7 +50,6 @@ public class CustomerRepository implements BaseRepository<Customer> {
         try {
             String key = entity.getType() + "::" + entity.getId();
             MutationResult result = collection.insert(key, entity); //,
-//                    InsertOptions.insertOptions().transcoder(transcoder));
         } catch (DocumentExistsException ex) {
             System.err.println("The document already exists!");
         } catch (CouchbaseException ex) {
@@ -89,6 +94,19 @@ public class CustomerRepository implements BaseRepository<Customer> {
         } catch (CouchbaseException ex) {
             System.err.println("Something else happened: " + ex);
         }
+    }
+
+    public List<Customer> findAllByCountry(String country) {
+        String query="select customer360.* from `customer360` where billingAddress.country = $countryCode and type='customer' limit 10";
+        List<Customer> customerList = null;
+        try {
+            QueryResult queryResult = cluster.query(query,
+                    queryOptions().parameters(JsonObject.create().put("countryCode", country)));
+            customerList =  queryResult.rowsAs(Customer.class);
+        } catch (QueryException e) {
+            System.err.println("Query failed: " + query);
+        }
+        return customerList;
     }
 
 }

@@ -56,6 +56,15 @@ public abstract class Entity {
 		this.cas = cas;
 	}
 
+	/**
+	 * Generate a key using elements of the entity as TYPE::ID
+	 *
+	 * @return Generated key
+	 */
+	public String genKey() {
+		return getType() + "::" + getId();
+	}
+
 	@Override
 	public String toString() {
 		return "Entity{" +

@@ -14,12 +14,14 @@ public class Customer360Application {
 		SpringApplication.run(Customer360Application.class, args);
 	}
 
+	// Lab 03a
 	@Bean
 	public Cluster cluster(@Value("${couchbase.clusterHost}") String hostname, @Value("${couchbase.username}") String username,
 						   @Value("${couchbase.password}") String password) {
 		return Cluster.connect(hostname,username,password);
 	}
 
+	// Lab 03b
 	@Bean
 	public Bucket customerBucket(Cluster cluster, @Value("${couchbase.bucket}") String bucketName) {
 		return cluster.bucket(bucketName);

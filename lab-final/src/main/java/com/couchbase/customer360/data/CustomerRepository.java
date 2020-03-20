@@ -30,10 +30,9 @@ public class CustomerRepository implements BaseRepository<Customer> {
         this.bucket = customerBucket;
         collection = bucket.defaultCollection();
 
-        //transcoder = JsonTranscoder.create(new GsonSerializer());
-       // transcoder = JsonTranscoder.create(JacksonJsonSerializer.create());
     }
 
+    // Lab 4
     @Override
     public Customer findById(String id) {
         try {
@@ -45,6 +44,7 @@ public class CustomerRepository implements BaseRepository<Customer> {
         }
     }
 
+    // Lab 5
     @Override
     public Customer create(Customer entity) {
         try {
@@ -58,11 +58,12 @@ public class CustomerRepository implements BaseRepository<Customer> {
         return entity;
     }
 
+    // Lab 7
     @Override
     public Customer update(Customer entity) {
         try {
             String key = entity.getType() + "::" + entity.getId();
-            collection.replace(key,entity); //, ReplaceOptions.replaceOptions().transcoder(transcoder));
+            collection.replace(key,entity);
         } catch (DocumentNotFoundException ex) {
 
             System.err.println("Document did not exist when trying to remove");
@@ -76,8 +77,7 @@ public class CustomerRepository implements BaseRepository<Customer> {
     public Customer upsert(Customer entity) {
         try {
             String key = entity.getType() + "::" + entity.getId();
-            collection.upsert(key, entity); //,
-//                    UpsertOptions.upsertOptions().transcoder(transcoder));
+            collection.upsert(key, entity);
         } catch (CouchbaseException ex) {
             System.err.println("Something else happened: " + ex);
         }
@@ -96,6 +96,7 @@ public class CustomerRepository implements BaseRepository<Customer> {
         }
     }
 
+    // Lab 6 (Modified from original task)
     public List<Customer> findAllByCountry(String country) {
         String query="select customer360.* from `customer360` where billingAddress.country = $countryCode and type='customer' limit 10";
         List<Customer> customerList = null;

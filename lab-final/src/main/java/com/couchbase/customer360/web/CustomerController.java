@@ -37,7 +37,7 @@ public class CustomerController {
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{itemId}")
-                .buildAndExpand(customer.getId())
+                .buildAndExpand(customer.genKey())
                 .toUri();
         return ResponseEntity.created(location).build();
     }

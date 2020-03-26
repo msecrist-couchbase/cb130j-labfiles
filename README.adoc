@@ -1,0 +1,23 @@
+= CB130j Course lab material
+This project includes both the project lab files and the lab instructions for performing
+the labs. It is intended that a build process will compose all the raw material
+into the published form.
+
+== Build Setup
+The lab instructions are written in https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[AsciiDoc] and built using https://github.com/GitbookIO/gitbook[GitBook].
+
+=== GitBook prerequisites
+GitBook is dependent on a number of tools to be in place. 
+
+* NPM (Node Package Manager) - This is the key tool used to install other GitBook components.
+On Mac, this can be installed quite easily using Brew.
++
+```
+brew install npm
+```
+
+* GitBook CLI - Used to manage the GitBook build process
+
+* Calibre - A tool
+
+== Running the build

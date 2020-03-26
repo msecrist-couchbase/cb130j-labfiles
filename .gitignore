@@ -34,3 +34,7 @@ build/
 
 ### Mvn cache ###
 .mvn
+
+### Stuff related to GitBook ###
+_book
+node_modules

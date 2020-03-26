@@ -1,0 +1,38 @@
+= Couchbase Developer - Introduction
+// Used for source highlighting
+:source-highlighter: rouge
+:listing-caption: Listing
+
+== Introduction
+
+In this lab you will gain experience with ...
+
+*What you will learn:*
+
+* How to ..
+* How to ..
+* How to ..
+
+*Estimated time to complete: 45 minutes*
+
+== Instructions
+
+Example
+
+.Create a basic PDF document using Prawn
+[source,ruby]
+----
+require 'prawn'
+
+Prawn::Document.generate 'example.pdf' do
+  text 'Hello, World!'
+end
+----
+
+=== Use-case
+
+=== Setup
+
+=== Tasks
+
+== Lab summary

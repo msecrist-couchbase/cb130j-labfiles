@@ -1,0 +1,14 @@
+= CB130j - Introduction to the Couchbase SDK
+This course will provide an in-depth coverage of various developer concepts associated with developing
+applications for Couchbase.
+
+== Course Objectives
+
+* One
+* Two
+* Three
+
+== Prerequisites
+This course presumes knowledge of Java and basic SQL and data access patterns.
+
+== Other Resources

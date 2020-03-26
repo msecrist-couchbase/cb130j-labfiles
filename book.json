@@ -1,0 +1,36 @@
+{
+	"author": "Couchbase Training",
+	"title": "CB130j - Introduction to the Java SDK",
+	"root": "lab-instructions",
+	"gitbook": ">=3.2.3",
+	"language": "en",
+	"plugins": [
+		"livereload",
+		"hints",
+		"highlight",
+		"search",
+		"lunr",
+		"-github-embed",
+		"-sharing",
+		"-fontsettings",
+		"-theme-default",
+		"theme-couchbase@git+https://github.com/couchbaselabs/gitbook-plugin-theme-couchbase.git"
+	],
+	"pluginsConfig": {
+	},
+	"structure" : {
+        "readme" : "course_overview.adoc",
+        "summary" : "toc.adoc"
+	},
+	"pdf": {
+		"fontFamily": "Helvetica Neue",
+		"fontSize": 13,
+		"pageNumbers": true,
+		"margin": {
+			"top": 28,
+			"botom": 28,
+			"left": 31,
+			"right": 31
+		}
+	}
+}

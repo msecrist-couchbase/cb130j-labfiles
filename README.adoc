@@ -16,8 +16,51 @@ On Mac, this can be installed quite easily using Brew.
 brew install npm
 ```
 
-* GitBook CLI - Used to manage the GitBook build process
+* GitBook CLI - Used to manage the GitBook build process.
+To install, use the following NPM command:
++
+```
+npm install gitbook-cli -g
+```
 
-* Calibre - A tool
+* ebook-convert - A tool that's part of the Caliber software.
+To install:
+
+  1. Download https://calibre-ebook.com/download[Calibre Software]
+  1. Create a symbolic link to ebook-convert
++
+```
+sudo ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin
+```
 
 == Running the build
+For details on how the configuration of gitbook works using the *book.json* file, review the https://github.com/GitbookIO/gitbook/blob/master/docs/config.md[Configuration] page on the GitBook repo site.
+You can review the *book.json* file to see how it is configured for this project.
+
+=== Initializing the project
+You may need to install gitbook dependencies intially before running a build.
+This is typically just a one-time task.
+The dependencies are ignored by Git so they won't be committed to the repository.
+
+```
+gitbook install
+```
+
+=== Generating Web Pages
+To generate web pages, use the following command from the top level folder of the repository.
+
+```
+gitbook serve
+```
+
+Now you can visit http://localhost:4000 on your local machine and as you make changes locally to the Markdown files the website will automatically reload.
+
+=== Producing a PDF
+Once you have installed Calibre and created the symbolic link, you can produce a PDF file as follows.
+
+```
+gitbook pdf . ./mybook.pdf
+```
+
+This will create a PDF document using a cover page if it is provided.
+This document is suitable or handing out to students as a lab guide.
